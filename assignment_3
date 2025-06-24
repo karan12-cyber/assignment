@@ -1,0 +1,91 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(ResumeApp());
+}
+
+class ResumeApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Karan Dixit - Resume',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: ResumeScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class ResumeScreen extends StatelessWidget {
+  final String name = "Karan Dixit";
+  final String education = "B.Tech (Computer Science)";
+  final List<String> skills = ["C Language", "Python", "Java", "AI/ML"];
+  final String internship = "Completed 1-month internship as College Ambassador";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Resume - $name"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Card(
+            margin: EdgeInsets.all(20),
+            elevation: 10,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Name
+                  Center(
+                    child: Text(
+                      name,
+                      style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+
+                  // Education
+                  Text(
+                    "🎓 Education:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(education),
+                  SizedBox(height: 15),
+
+                  // Skills
+                  Text(
+                    "💻 Skills:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  ...skills.map((skill) => Text("• $skill")).toList(),
+                  SizedBox(height: 15),
+
+                  // Internship
+                  Text(
+                    "📋 Internship:",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(internship),
+                  SizedBox(height: 30),
+
+                  // Footer
+                  Center(
+                    child: Text(
+                      "Thank you for viewing my resume!",
+                      style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[700]),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
